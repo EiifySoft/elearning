@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "78880560665",
+    "project_id": "e-learning-46c2f",
+    "storage_bucket": "e-learning-46c2f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:78880560665:android:ecb53a84a36a531a473c88",
+        "android_client_info": {
+          "package_name": "com.nextgen.elearning"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "78880560665-56dnq675d08sjbprauqvti4a55uujhrr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdt6bDAOw7hT4Yg0QRAGvx6drVbxa1jwA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "78880560665-56dnq675d08sjbprauqvti4a55uujhrr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "78880560665-q87guj85dmhae5n847hei60uobh9e45t.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.nextgen.elearning"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
