@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: AppBlockProvider.provider,
+      providers: AppBlocProvider.provider,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'E L E R N I N G',
