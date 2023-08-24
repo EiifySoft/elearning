@@ -90,4 +90,16 @@ class AppSizedBox {
       height: 75,
     );
   }
+
+  static sizedBoxWidth5() {
+    return const SizedBox(
+      width: 5,
+    );
+  }
+
+  static sizedBoxWidth10() {
+    return const SizedBox(
+      width: 10,
+    );
+  }
 }

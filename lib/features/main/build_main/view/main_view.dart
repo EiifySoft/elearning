@@ -22,6 +22,7 @@ class MainView extends StatelessWidget {
             showSelectedLabels: false,
             showUnselectedLabels: false,
             backgroundColor: AppColors.lightPinkColor,
+            iconSize: 30,
             currentIndex: state.currentIndex,
             onTap: (index) {
               state.currentIndex = index;
