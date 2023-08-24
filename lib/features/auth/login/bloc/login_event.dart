@@ -16,3 +16,8 @@ class ObscureTextEvent extends LoginEvent {
   bool? isObscureText;
   ObscureTextEvent({this.isObscureText});
 }
+
+class IsLoadingEvet extends LoginEvent {
+  bool? isLoading;
+  IsLoadingEvet({this.isLoading});
+}

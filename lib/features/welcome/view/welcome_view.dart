@@ -141,7 +141,7 @@ class _WelcomeViewState extends State<WelcomeView> {
                     curve: Curves.decelerate);
               } else {
                 Navigator.of(context)
-                    .pushNamedAndRemoveUntil("login", (route) => false);
+                    .pushNamedAndRemoveUntil("/login", (route) => false);
               }
             },
           ),

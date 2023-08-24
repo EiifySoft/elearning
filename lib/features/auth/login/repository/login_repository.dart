@@ -1,7 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:elearning/common/utils/app_snackbar.dart';
-import 'package:elearning/features/auth/login/bloc/login_bloc.dart';
+import 'package:elearning/features/auth/login/bloc/index.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,10 +27,13 @@ class LoginRepository {
       }
 
       try {
+        context.read<LoginBloc>().add(IsLoadingEvet(isLoading: true));
         final credentials = await FirebaseAuth.instance
             .signInWithEmailAndPassword(email: email, password: password);
+        context.read<LoginBloc>().add(IsLoadingEvet(isLoading: false));
 
         if (credentials.user == null) {
+          context.read<LoginBloc>().add(IsLoadingEvet(isLoading: false));
           await AppSnackbar.showSnackBar(
               context: context,
               content:
@@ -38,24 +41,26 @@ class LoginRepository {
         }
 
         if (credentials.user!.emailVerified) {
+          context.read<LoginBloc>().add(IsLoadingEvet(isLoading: false));
           await AppSnackbar.showSnackBar(
               context: context,
               content:
                   "Email address not verified by us. Please check your inbox and verify email address by clickin on link.");
         }
         if (credentials.user != null) {
-          // await AppSnackbar.showSnackBar(
-          //     context: context, content: "User exist");
+          state.isLoading = false;
           Navigator.of(context)
-              .pushNamedAndRemoveUntil("main", (route) => false);
+              .pushNamedAndRemoveUntil("/mainview", (route) => false);
         }
       } on FirebaseAuthException catch (e) {
         if (e.code == "invalid-email") {
+          context.read<LoginBloc>().add(IsLoadingEvet(isLoading: false));
           await AppSnackbar.showSnackBar(
               context: context,
               content: "Email address is invalid or not formated.");
         }
         if (e.code == "user-not-found") {
+          context.read<LoginBloc>().add(IsLoadingEvet(isLoading: false));
           await AppSnackbar.showSnackBar(
               context: context,
               content:
@@ -63,6 +68,7 @@ class LoginRepository {
         }
 
         if (e.code == "wrong-password") {
+          context.read<LoginBloc>().add(IsLoadingEvet(isLoading: false));
           await AppSnackbar.showSnackBar(
               context: context,
               content:
@@ -70,6 +76,7 @@ class LoginRepository {
         }
 
         if (e.code == "user-disabled") {
+          context.read<LoginBloc>().add(IsLoadingEvet(isLoading: false));
           await AppSnackbar.showSnackBar(
               context: context,
               content:

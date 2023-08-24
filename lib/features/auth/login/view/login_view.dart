@@ -113,9 +113,13 @@ class _LoginViewState extends State<LoginView> {
               ),
             ),
             AppSizedBox.sizedBoxHeight60(),
-            reusableElevatedButton(size, onPressed: () async {
-              await LoginRepository(context: context).handleLogin();
-            }, lable: "Login"),
+            state.isLoading == false
+                ? reusableElevatedButton(size, onPressed: () async {
+                    await LoginRepository(context: context).handleLogin();
+                  }, lable: "Login")
+                : const Center(
+                    child: CircularProgressIndicator(),
+                  ),
           ],
         );
       },
@@ -128,7 +132,7 @@ class _LoginViewState extends State<LoginView> {
         AppTextStyle.style16(text: "Don't have an account?"),
         TextButton(
           onPressed: () {
-            Navigator.of(context).pushNamed("register");
+            Navigator.of(context).pushNamed("/register");
           },
           child: AppTextStyle.style16(
               text: "Register Now.", color: AppColors.darkBrownColor),

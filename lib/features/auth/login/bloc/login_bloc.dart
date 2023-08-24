@@ -10,6 +10,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on(_emailEvent);
     on(_passwordEvent);
     on(_obscureEvent);
+    on(_isLoadingEvent);
   }
   FutureOr<void> _emailEvent(EmailEvent event, Emitter<LoginState> emit) {
     emit(state.copywith(email: event.email));
@@ -22,5 +23,10 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   FutureOr<void> _obscureEvent(
       ObscureTextEvent event, Emitter<LoginState> emit) {
     emit(state.copywith(isObscureText: event.isObscureText));
+  }
+
+  FutureOr<void> _isLoadingEvent(
+      IsLoadingEvet event, Emitter<LoginState> emit) {
+    emit(state.copywith(isLoading: event.isLoading));
   }
 }

@@ -1,5 +1,6 @@
 import 'package:elearning/bloc_provider/bloc_provider.dart';
 import 'package:elearning/common/colors/index.dart';
+import 'package:elearning/common/routes/index.dart';
 import 'package:elearning/features/auth/login/view/login_view.dart';
 import 'package:elearning/features/auth/register/view/register_view.dart';
 import 'package:elearning/features/counter/view/counter_view.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: AppBlocProvider.provider,
+      providers: [...AppViews().allBlocProvider(context)],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'E L E R N I N G',
@@ -35,13 +36,15 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: AppColors.backgroundColor,
           useMaterial3: true,
         ),
-        home: const WelcomeView(),
-        routes: {
-          "counter": (context) => const CounterView(),
-          "login": (context) => const LoginView(),
-          "register": (context) => const RegisterView(),
-          "main": (context) => const MainView(),
-        },
+        // home: const WelcomeView(),
+        onGenerateRoute: AppRoutes.gentrateRouteSettings,
+        // routes: {
+
+        //   "counter": (context) => const CounterView(),
+        //   "login": (context) => const LoginView(),
+        //   "register": (context) => const RegisterView(),
+        //   "main": (context) => const MainView(),
+        // },
       ),
     );
   }
