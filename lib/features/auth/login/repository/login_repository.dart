@@ -1,7 +1,8 @@
 // ignore_for_file: use_build_context_synchronously
-
+import 'package:elearning/common/services/storage_service.dart';
 import 'package:elearning/common/utils/app_snackbar.dart';
 import 'package:elearning/features/auth/login/bloc/index.dart';
+import 'package:elearning/global.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -49,6 +50,9 @@ class LoginRepository {
         }
         if (credentials.user != null && credentials.user!.emailVerified) {
           state.isLoading = false;
+          Global.storageService
+              .setString(StroageConstants.USER_TOKEN_KEY, "123456");
+
           Navigator.of(context)
               .pushNamedAndRemoveUntil("/mainview", (route) => false);
         }

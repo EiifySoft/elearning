@@ -1,10 +1,12 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:elearning/common/colors/colors.dart';
+import 'package:elearning/common/services/storage_service.dart';
 import 'package:elearning/common/style/text_style.dart';
 import 'package:elearning/common/widgets/reusable_button.dart';
 import 'package:elearning/features/welcome/bloc/welcome_bloc.dart';
 import 'package:elearning/features/welcome/bloc/welcome_event.dart';
 import 'package:elearning/features/welcome/bloc/welcome_state.dart';
+import 'package:elearning/global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -140,6 +142,8 @@ class _WelcomeViewState extends State<WelcomeView> {
                     duration: const Duration(milliseconds: 500),
                     curve: Curves.decelerate);
               } else {
+                Global.storageService
+                    .setBool(StroageConstants.APP_FIRST_OPEN, true);
                 Navigator.of(context)
                     .pushNamedAndRemoveUntil("/login", (route) => false);
               }
