@@ -40,14 +40,14 @@ class LoginRepository {
                   "User not found or user credentials detail not found in database.");
         }
 
-        if (credentials.user!.emailVerified) {
+        if (!credentials.user!.emailVerified) {
           context.read<LoginBloc>().add(IsLoadingEvet(isLoading: false));
           await AppSnackbar.showSnackBar(
               context: context,
               content:
                   "Email address not verified by us. Please check your inbox and verify email address by clickin on link.");
         }
-        if (credentials.user != null) {
+        if (credentials.user != null && credentials.user!.emailVerified) {
           state.isLoading = false;
           Navigator.of(context)
               .pushNamedAndRemoveUntil("/mainview", (route) => false);

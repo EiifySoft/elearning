@@ -1,11 +1,5 @@
-import 'package:elearning/bloc_provider/bloc_provider.dart';
 import 'package:elearning/common/colors/index.dart';
 import 'package:elearning/common/routes/index.dart';
-import 'package:elearning/features/auth/login/view/login_view.dart';
-import 'package:elearning/features/auth/register/view/register_view.dart';
-import 'package:elearning/features/counter/view/counter_view.dart';
-import 'package:elearning/features/main/build_main/view/main_view.dart';
-import 'package:elearning/features/welcome/view/welcome_view.dart';
 import 'package:elearning/global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,15 +30,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: AppColors.backgroundColor,
           useMaterial3: true,
         ),
-        // home: const WelcomeView(),
         onGenerateRoute: AppRoutes.gentrateRouteSettings,
-        // routes: {
-
-        //   "counter": (context) => const CounterView(),
-        //   "login": (context) => const LoginView(),
-        //   "register": (context) => const RegisterView(),
-        //   "main": (context) => const MainView(),
-        // },
       ),
     );
   }
